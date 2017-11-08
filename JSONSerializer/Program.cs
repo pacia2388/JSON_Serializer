@@ -60,6 +60,20 @@ namespace JSONSerializer
             Console.ReadLine();
 
             File.WriteAllText(Environment.CurrentDirectory + "\\product.json", json);
+
+            Console.ReadLine();
+
+            List<Product> fromFileProducts =
+                JsonConvert.DeserializeObject<List<Product>>(
+                    File.ReadAllText(Environment.CurrentDirectory + "\\product.json"));
+            foreach (var product in fromFileProducts)
+            {
+                Console.WriteLine($"barcode : {product.barcode_number}, name : {product.item_name}, price : {product.selling_price}");
+            }
+
+            Console.ReadLine();
+
+
         }
     }
 }
