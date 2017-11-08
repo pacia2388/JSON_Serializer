@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace JSONSerializer
 {
@@ -45,7 +46,7 @@ namespace JSONSerializer
             products.Add(p3);
             products.Add(p4);
 
-            string json = JsonConvert.SerializeObject(products);
+            string json = JsonConvert.SerializeObject(products, Formatting.Indented);
 
             Console.WriteLine(json);
             Console.ReadLine();
@@ -57,6 +58,8 @@ namespace JSONSerializer
             }
 
             Console.ReadLine();
+
+            File.WriteAllText(Environment.CurrentDirectory + "\\product.json", json);
         }
     }
 }
